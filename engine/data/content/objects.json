@@ -1,0 +1,10 @@
+[
+  {"id": "snare", "name": "Капкан", "glyph": "Кн", "color": [200, 160, 100],
+   "kind": "trap", "trigger": "enemy_enter", "radius": 0, "lifetime": 90, "hidden_from_enemies": true,
+   "ops": [{"op": "damage", "type": "physical", "base": 8, "variance": 10},
+           {"op": "apply_effect", "effect": "rooted", "duration": 3}]},
+  {"id": "meteor_mark", "name": "Метка метеора", "glyph": "Мт", "color": [255, 80, 60],
+   "kind": "delayed", "trigger": "timer", "delay": 3, "radius": 1, "dangerous": true,
+   "ops": [{"op": "damage", "type": "fire", "base": 28, "variance": 10},
+           {"op": "apply_effect", "effect": "burning", "duration": 3, "chance": 60}]}
+]

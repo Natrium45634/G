@@ -1,0 +1,15 @@
+[
+  {"id": "grass",   "name": "Трава",          "color": [96, 138, 70],   "pattern": "grass",  "move_cost": {"foot": 100, "heavy": 100}, "biome": "луг"},
+  {"id": "road",    "name": "Дорога",         "color": [150, 128, 92],  "pattern": "road",   "move_cost": {"foot": 75,  "heavy": 75},  "biome": "луг", "desc": "Ускоряет передвижение"},
+  {"id": "forest",  "name": "Лес",            "color": [52, 96, 52],    "pattern": "trees",  "move_cost": {"foot": 200, "heavy": 250}, "los_cover": 15, "cover": 20, "biome": "лес", "desc": "Частичное препятствие для обзора и укрытие"},
+  {"id": "bush",    "name": "Кусты",          "color": [84, 120, 58],   "pattern": "bush",   "move_cost": {"foot": 150, "heavy": 150}, "los_cover": 10, "cover": 25, "biome": "луг"},
+  {"id": "swamp",   "name": "Болото",         "color": [78, 96, 74],    "pattern": "swamp",  "move_cost": {"foot": 300}, "biome": "топь", "desc": "Непроходимо для тяжёлых юнитов"},
+  {"id": "water",   "name": "Глубокая вода",  "color": [46, 92, 150],   "pattern": "water",  "move_cost": {}, "biome": "река", "desc": "Непроходимо без особых способностей"},
+  {"id": "ford",    "name": "Брод",           "color": [76, 124, 160],  "pattern": "ford",   "move_cost": {"foot": 200, "heavy": 200}, "biome": "река"},
+  {"id": "bridge",  "name": "Мост",           "color": [132, 100, 66],  "pattern": "bridge", "move_cost": {"foot": 100, "heavy": 100}, "biome": "река"},
+  {"id": "rock",    "name": "Скала",          "color": [110, 104, 96],  "pattern": "rock",   "move_cost": {}, "blocks_los": true, "biome": "горы"},
+  {"id": "wall",    "name": "Стена",          "color": [120, 112, 104], "pattern": "wall",   "move_cost": {}, "blocks_los": true, "biome": "руины"},
+  {"id": "rubble",  "name": "Обломки",        "color": [128, 118, 100], "pattern": "rubble", "move_cost": {"foot": 150, "heavy": 150}, "cover": 35, "biome": "руины", "desc": "Хорошее укрытие"},
+  {"id": "floor",   "name": "Каменный пол",   "color": [140, 132, 118], "pattern": "floor",  "move_cost": {"foot": 100, "heavy": 100}, "biome": "руины"},
+  {"id": "sand",    "name": "Песок",          "color": [196, 176, 120], "pattern": "sand",   "move_cost": {"foot": 125, "heavy": 150}, "biome": "берег"}
+]

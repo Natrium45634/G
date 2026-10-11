@@ -1,0 +1,4 @@
+[
+  {"id": "mana",    "name": "Мана",         "max_stat": "mana_max",    "regen_stat": "mana_regen",    "color": [80, 140, 255]},
+  {"id": "stamina", "name": "Выносливость", "max_stat": "stamina_max", "regen_stat": "stamina_regen", "color": [230, 190, 60]}
+]

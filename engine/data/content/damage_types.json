@@ -1,0 +1,6 @@
+[
+  {"id": "physical", "name": "физический", "armor": true,  "resist_stat": "res_physical", "vuln_stat": "vuln_physical", "color": [235, 235, 235]},
+  {"id": "fire",     "name": "огонь",      "armor": false, "resist_stat": "res_fire",     "vuln_stat": "vuln_fire",     "color": [255, 140, 40]},
+  {"id": "poison",   "name": "яд",         "armor": false, "resist_stat": "res_poison",   "vuln_stat": "vuln_poison",   "color": [140, 220, 70]},
+  {"id": "arcane",   "name": "магия",      "armor": false, "resist_stat": "res_arcane",   "vuln_stat": "vuln_arcane",   "color": [190, 120, 255]}
+]

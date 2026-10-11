@@ -1,0 +1,6 @@
+# Сборка и временные файлы
+/bin/
+*.test
+*.out
+/quicksave.json
+/screenshot*.png
