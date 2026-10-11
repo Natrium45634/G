@@ -63,7 +63,7 @@
              "evasion": 15, "sight": 7, "awareness": 15},
    "basic_attack": "bite", "ai": "melee"},
 
-  {"id": "dummy", "name": "Тренировочное чучело", "glyph": "Ч", "move_class": "heavy",
+  {"id": "dummy", "name": "Тренировочное чучело", "glyph": "Ц", "move_class": "heavy",
    "desc": "Не двигается и не атакует; удобно для проверки секторов и умений",
    "stats": {"hp_max": 400, "ap_max": 0, "ap_regen": 0, "move_cost": 99, "attack": 0,
              "armor": 2, "evasion": 20, "block": 40, "block_power": 60, "sight": 0},

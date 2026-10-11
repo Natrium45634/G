@@ -391,14 +391,15 @@ func TestStunInterruptsPreparationAndBlocksActions(t *testing.T) {
 func TestDamageInterruptsInterruptibleSkill(t *testing.T) {
 	w := newTestWorld(t, flat, []data.UnitPlacement{place("mage", 0, 1, 2, 0), place("dummy", 1, 6, 2, 3)})
 	m := w.Units[0]
+	manaBefore, apBefore := m.Res["mana"], m.AP
 	mustQueue(t, w, m, OrderSpec{Type: OrderSkill, Skill: "fireball", Dest: at(6, 2)})
 	w.Step()
 	w.dealDamage(m, 5, "physical", nil, DamageOpts{})
 	if m.Action != nil || m.Current != nil {
 		t.Fatal("урон не прервал подготовку огненного шара")
 	}
-	if m.Res["mana"] != w.ResMax(m, "mana")-25*data.ResScale+m.Acc["res:mana"]*0 && m.Res["mana"] > w.ResMax(m, "mana")-24*data.ResScale {
-		t.Fatal("ресурсы за прерванное умение должны быть потрачены")
+	if m.Res["mana"] > manaBefore-24*data.ResScale || m.AP > apBefore-data.AP(3) {
+		t.Fatal("ресурсы и ОД за прерванное умение должны быть потрачены")
 	}
 }
 

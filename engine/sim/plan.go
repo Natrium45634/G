@@ -315,7 +315,7 @@ func (w *World) projectOrder(u *Unit, o *Order, active bool, pos hex.Hex, facing
 			if want, need := w.requiredFacing(facing, pos, sk, tgt); need {
 				s.TurnCost = w.TurnCost(u, facing, want)
 				facing = want
-				warn(CodeOK, fmt.Sprintf("разворот %s (+%.2f ОД)", want.Arrow(), data.APf(s.TurnCost)))
+				warn(CodeOK, fmt.Sprintf("разворот → %s (+%.2f ОД)", want.Name(), data.APf(s.TurnCost)))
 			}
 		}
 		s.ActCost = data.AP(sk.APCost)

@@ -1,6 +1,10 @@
 package sim
 
-import "fmt"
+import (
+	"fmt"
+
+	"hextactics/engine/hex"
+)
 
 // AutoPause — настройки автоматической паузы (какие события останавливают время).
 type AutoPause struct {
@@ -33,6 +37,8 @@ type Clock struct {
 	AutoPause   AutoPause `json:"auto_pause"`
 	PlayerSide  int       `json:"player_side"`
 	Reason      string    `json:"reason"` // причина последней автопаузы
+	ReasonHex   hex.Hex   `json:"reason_hex"`
+	ReasonAt    bool      `json:"reason_at"` // есть ли место события
 	RealElapsed float64   `json:"real_elapsed"`
 	MaxTicks    int       `json:"max_ticks"` // предел тиков за один кадр (защита от «спирали»)
 	acc         float64
@@ -68,6 +74,18 @@ func (c *Clock) TogglePause() {
 	}
 }
 
+// Alpha — доля следующего тика, накопленная в аккумуляторе (0..1) — для плавной анимации.
+func (c *Clock) Alpha(w *World) float64 {
+	if c.Speed == 0 {
+		return 0
+	}
+	a := c.acc * float64(w.C.Rules.TicksPerSecond)
+	if a > 1 {
+		a = 1
+	}
+	return a
+}
+
 // Paused — время остановлено.
 func (c *Clock) Paused() bool { return c.Speed == 0 }
 
@@ -91,8 +109,8 @@ func (c *Clock) Advance(w *World, realDt float64) int {
 		c.acc -= tickDur
 		n++
 		if reason := c.checkAutoPause(w); reason != "" {
-			c.Reason = reason
 			c.SetSpeed(0)
+			c.Reason = reason
 			return n
 		}
 	}
@@ -110,8 +128,8 @@ func (c *Clock) RunTicks(w *World, n int) int {
 		w.Step()
 		done++
 		if reason := c.checkAutoPause(w); reason != "" {
-			c.Reason = reason
 			c.SetSpeed(0)
+			c.Reason = reason
 			break
 		}
 	}
@@ -127,6 +145,7 @@ func (c *Clock) checkAutoPause(w *World) string {
 		e := &evs[i]
 		u := w.Unit(e.Unit)
 		mine := u != nil && u.Side == side
+		c.ReasonHex, c.ReasonAt = e.Hex, true
 		switch e.Type {
 		case EvEnemySpotted:
 			if ap.EnemySpotted && e.VisibleTo(side) && u != nil && u.Side != side {

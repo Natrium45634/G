@@ -162,7 +162,7 @@ func (w *World) Describe(o *Order) string {
 		}
 		return s
 	case OrderTurn:
-		return fmt.Sprintf("Поворот → %s %s", o.Dir.Arrow(), o.Dir.Name())
+		return "Поворот → " + o.Dir.Name()
 	case OrderAttack:
 		if t := w.Unit(o.TargetUnit); t != nil {
 			return "Атака: " + t.Name
@@ -179,7 +179,7 @@ func (w *World) Describe(o *Order) string {
 					return name + ": " + t.Name
 				}
 			case "direction":
-				return fmt.Sprintf("%s %s %s", name, o.Dir.Arrow(), o.Dir.Name())
+				return name + " → " + o.Dir.Name()
 			case "hex":
 				if c := w.Map.Cell(o.Dest); c != nil {
 					return fmt.Sprintf("%s → [%d:%d]", name, c.Col, c.Row)

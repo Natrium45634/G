@@ -8,6 +8,9 @@ import (
 	"hextactics/engine/hex"
 )
 
+// TestDebugBattleLog печатает журнал полного боя ИИ против ИИ (диагностика баланса):
+//
+//	BATTLE_LOG=1 go test ./engine/sim -run DebugBattleLog -v
 func TestDebugBattleLog(t *testing.T) {
 	if os.Getenv("BATTLE_LOG") == "" {
 		t.Skip()
